@@ -1,21 +1,27 @@
-Multi-feature Forgery Detection Deep-Learning based Framework
+# Insurance Claim Verification System (Forgery Detection and Template Matching for Medical Claim)
 
-1. Metadata Analysis (10/100 Weight):
-Evaluating  ISO value, and comparing creation vs. modified date/time.
-ISO value can indicate whether it is an original image or new/edited image. 
-Similarly the creation date and modified date will also be changed if there is any edit made and will be reflected in the metadata details, indicating a warring. 
-Scores: 8-10 (Green Flag - Accepted), 4-8 (Amber Flag - Suspicious), 0-4 (Red Flag - Rejected).
-2. Error Level Analysis (ELA):
-Customized CNN with SRM-initialized high-pass filters to detect tampering artifacts.
-CNN is used as a patch descriptor for dense feature extraction from test images.
-Feature fusion technique applied for final discriminative features.
-The image with RGB values is given into the neural network. Output layer contain two neurons. One for fake image and one for real image. Depending upon the value of these neuron outputs we determine which class it is real or fake and how much confidence it is to be real or fake 
-3. Pixel Manipulation Percentage Analyzer:
-Assess pixel-level authenticity. Generating a probability heatmap that quantifies the extent of manipulation.
-It uses two stream process RGB stream and DCT stream. The RGB stream takes RGB pixel values as input and follows it to neural network and DCT stream which is type of Fourier transform it capture Statistical Distribution through Y channel to detect double image compression then finally both the result pass into CNN model. 
-And finally we get the heatmap of the output image explaining about the pixel manipulated in the image and the score that how much that image is matching and authenticate. 
-4. Template Matching using SSIM (Structural Similarity Index Measure) : 
-To identify any missing content in the user-submitted document when compared to our established ground truth. 
-It will make a bounding box in places where there is any extra added items compared to the ground truth or if there is anything missing . This will clearly show us edit or tampering to our image. 
+## Overview
+This repository contains an innovative insurance claim verification system tailored for Bajaj Finserv, aiming to revolutionize conventional assessment methods using advanced technologies. The system leverages Template Matching algorithms, Forgery Detection mechanisms, and Detail Verification processes to enhance the accuracy and efficacy of insurance claims processing while fortifying defenses against potential fraudulent or tampered submissions.
+
+## Features
+
+### Template Matching
+- **RESNET101 and QDRANT Vector Database**: Utilizes deep learning to create detailed feature maps capturing document features. QDRANT vector database ensures faster and efficient comparison of feature maps, enhancing the matching process.
+- **SIFT-KNN Matcher**: Focuses on visual similarities in images using Scale-Invariant Feature Transform (SIFT) and K-Nearest Neighbors (KNN) algorithm to find the most similar templates based on visual characteristics.
+
+### Forgery Detection
+- **Logo Matching using NMSE and SIFT**: Compares logos in different images using Normalized Mean Square Error (NMSE) and Scale-Invariant Feature Transform (SIFT) methods to measure and find similarities between logos.
+- **Text Size Alignment Analysis**: Examines the alignment and consistency of text sizes in documents or images to ensure uniformity and readability.
+- **Pixel Manipulation Analysis**: Assesses document authenticity at a pixel level using RGB and DCT streams, generating a probability heatmap quantifying the extent of manipulation.
+- **Error Level Analysis (ELA)**: Analyzes images for error levels by resizing them to 100px x 100px and passing them through a neural network to determine the likelihood of an image being real or fake.
+
+## Utility
+Integrating this advanced model into insurance companies' processes enhances claim assessment accuracy, automates processes, and fortifies fraud detection. Without it, insurance companies would face increased vulnerability to fraudulent and erroneous claims, leading to potential financial losses. Manual evaluations would be prone to human error and inconsistencies, resulting in delays and higher operational costs. Additionally, the absence of such a model would hinder the industry's ability to adapt to evolving fraud tactics, making it challenging to stay ahead of fraudulent activities.
 
 
+## Contributors
+- Yash Saha
+- Shashank Pandey
+- Atul Patel
+- Sheffale TS
+- Aditya
